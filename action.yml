@@ -3,15 +3,12 @@ description: 'Checkout code in a standardized way for oVirt'
 inputs:
   fetch-depth:
     description: 'actions/checkout fetch-depth'
-    required: false
     default: 0
   ref:
     description: 'actions/checkout ref'
-    required: false
     default: ${{ github.event.pull_request.head.sha }}
   ssh-key:
     description: 'actions/checkout ssh-key'
-    required: false
   path:
     description: 'actions/checkout path'
   token:
