@@ -1,0 +1,36 @@
+name: 'Checkout'
+description: 'Checkout code in a standardized way for oVirt'
+inputs:
+  fetch-depth:
+    description: 'actions/checkout fetch-depth'
+    required: false
+    default: 0
+  ref:
+    description: 'actions/checkout ref'
+    required: false
+    default: ${{ github.event.pull_request.head.sha }}
+  ssh-key:
+    description: 'actions/checkout ssh-key'
+    required: false
+  path:
+    description: 'actions/checkout path'
+  token:
+    description: 'actions/checkout token'
+    default: ${{ github.token }}
+  repository:
+    description: 'actions/checkout repository'
+  submodules:
+    description: 'actions/checkout submodules'
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: ${{ inputs.fetch-depth }}
+        ref: ${{ inputs.ref }}
+        ssh-key: ${{ inputs.ssh-key }}
+        path: ${{ inputs.path }}
+        token: ${{ inputs.token }}
+        repository: ${{ inputs.repository }}
+        submodules: ${{ inputs.submodules }}
